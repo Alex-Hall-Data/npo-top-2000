@@ -60,5 +60,18 @@ for i in range(0, len(excelSheet['titel'])):
         if( bool(re.search(str(excelSheet['titel'][i]),entry))):
             excelSheet.iloc[i,3]=entry[-5:]
 
+
+           
+# Create a Pandas Excel writer using XlsxWriter as the engine.
+writer = pandas.ExcelWriter('top2000_with_year.xlsx', engine='xlsxwriter')
+
+# Convert the dataframe to an XlsxWriter Excel object.
+excelSheet.to_excel(writer, sheet_name='Sheet1')
+
+# Close the Pandas Excel writer and output the Excel file.
+writer.save()
+
+#page=browser.find_element_by_css_selector('body')
+#page.send_keys(Keys.CONTROL+'a')
 #page=browser.find_element_by_css_selector('body')
 #page.send_keys(Keys.CONTROL+'a')
