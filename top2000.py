@@ -3,6 +3,8 @@
 Created on Fri Dec 22 10:30:30 2017
 
 @author: alex.hall
+
+scrapes a difficult website where all the wanted text is in a javascript (?) application so cant use standard web scraping tools to get html source
 """
 
 from selenium import webdriver
@@ -17,6 +19,7 @@ import numpy as np
 driver = webdriver.Chrome() #replace with .Firefox(), or with the browser of your choice
 url = "http://www.nporadio2.nl/top2000"
 
+#navigate to webpage and copy all to clipboard by repeatedly scrolling down
 driver.get(url)
 element=driver.find_element_by_css_selector("body")
 time.sleep(5)
@@ -71,7 +74,3 @@ excelSheet.to_excel(writer, sheet_name='Sheet1')
 # Close the Pandas Excel writer and output the Excel file.
 writer.save()
 
-#page=browser.find_element_by_css_selector('body')
-#page.send_keys(Keys.CONTROL+'a')
-#page=browser.find_element_by_css_selector('body')
-#page.send_keys(Keys.CONTROL+'a')
